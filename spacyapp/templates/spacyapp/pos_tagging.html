@@ -1,0 +1,25 @@
+{% extends 'spacyapp/base.html' %}
+{% load static %}
+{% block content %}
+<h1 class="mt-4">品詞分析</h1>
+<form method="get" action="">
+    {% csrf_token %}
+    <div class="form-group">
+        <textarea class="form-control" placeholder="分析したい文章を英語で入力してください。"
+        name="text" rows="3" id="input_sentence"></textarea>
+    </div>
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit" value="分析" id="analyze">
+        <input class="btn btn-primary" type="reset" value="リセット" id="reset">
+        <input class="btn btn-primary" type="submit" value="CSVダウンロード" id="csv_dl">
+        <a style="display:none;" id="downloader" href="#"></a>
+    </div>
+</form>
+<p id="result_text"></p>
+<p id="pos_tagging_result"></p>
+<input class="btn btn-primary" type="submit" value="トップに戻る" id="scrollTop">
+
+<script src="{% static 'spacyapp/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'spacyapp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'spacyapp/js/pos_tagging.js' %}"></script>
+{% endblock %}
